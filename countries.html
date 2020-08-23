@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Clinical Studies</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <script src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+    body {
+	/*background: pink;*/
+
+  /* background: url(https://www.crosnt.com/croswp/uploads/2016/08/healthcare-data-technology.jpg) no-repeat fixed;; */
+  background: url(https://mbca.seca.com/fileadmin/user_upload/SHOP-883_Bild_Anpassung_1170x500px.jpg) no-repeat fixed;;
+	font-family: Laila;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+   
+    }
+
+    .center {
+  margin-left: auto;
+  margin-right: auto;
+}
+    #countries_table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  opacity: 0.9;
+}
+
+#countries_table td, #countries_table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#countries_table tr:nth-child(even){background-color: #f2f2f2;}
+#countries_table tr:nth-child(odd){background-color: #7ea8e7;}
+
+#countries_table tr:hover {background-color: #ddd;}
+
+#countries_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(37, 100, 196);
+  color: white;
+}
+
+#nav_bar {
+  /* padding: 1px 12px; */
+  background-color:rgb(37, 100, 196);
+  
+}
+
+footer {
+      background-color:rgb(37, 100, 196);
+      color: white;
+			padding: 2px;
+			
+			bottom: 0;
+        clear: both;
+        height: 27px;
+        position: fixed;
+        width: 100%;
+    }
+
+
+    </style>
+  <body>
+
+    <nav class="navbar navbar-inverse" >
+      <div class="container-fluid" id=nav_bar>
+        <div class="navbar-header" id=nav_bar>
+          
+          <a class="navbar-brand" style="color:#f8fafa" href="#">Clinical studies for <var id="resp"></var></a>
+        </div>
+       
+          <ul class="nav navbar-nav navbar-right" id=nav_bar>
+            <li><a style="color:#f8fafa" href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a style="color:#f8fafa" href="/world">World Map</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
+ 
+
+<script>
+  $(document).ready(function () {
+    $.ajax({
+        url: '/api',
+        method: "GET",
+        success: function(data) {
+          // $("#response").html(data);
+          console.log(data);
+          var element = document.getElementById("resp");
+          element.innerHTML = data[0].COND;
+          // alert('received this response: '+data);
+          const root = document.createElement('table');
+          root.style.width = '70%';
+          root.setAttribute("id", "countries_table");
+          root.setAttribute("class", "center");
+          const rows = document.createElement('tr');
+          const country = document.createElement('th');
+          country.textContent = 'Country';
+          const title = document.createElement('th');
+          title.textContent = 'Number of studies';
+          // const condition = document.createElement('th');
+          // condition.textContent = 'condition';
+          
+          root.append(rows);
+          rows.append(country,title);
+          // document.body.append(root);
+          for (item of data) {
+            // const root = document.createElement('table');
+            // root.style.width = '70%';
+            // root.setAttribute("id", "customers");
+            const rows = document.createElement('tr');
+            const country = document.createElement('td');
+            country.innerHTML = item.COUNTRY;
+            const title = document.createElement('td');
+            
+            // var total = 'COUNT(*)';
+            title.innerHTML = item["COUNT(*)"];
+            // title.innerHTML = JSON.stringify(item, ["COUNT(*)"], 4); 
+
+            // const condition = document.createElement('td');
+            // condition.innerHTML = item.COND
+            
+            root.append(rows);
+            rows.append(country,title);
+            // document.body.append(root);
+          }
+          document.body.append(root);
+        }
+      });
+
+    });
+
+</script>
+    
+  </body>
+</html>
+
+

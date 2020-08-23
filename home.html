@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="gr">
+<head>
+  <title>Clinical Studies</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+
+body {
+	background: url(https://mbca.seca.com/fileadmin/user_upload/SHOP-883_Bild_Anpassung_1170x500px.jpg) no-repeat fixed;;
+	font-family: Laila;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+ 
+.main-wrapper {
+		height: 88vh;  
+	  }
+	  
+.section {
+		height: 33.33%;  
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	  }
+	  
+.onethird {
+		height: 100%;  
+		width:  33.33%;
+		margin: 15px 0;
+	  }
+	
+footer {
+    background-color:rgb(37, 100, 196);
+    color: white;
+	padding: 2px;
+	bottom: 0;
+    clear: both;
+    height: 27px;
+    position: fixed;
+    width: 100%;
+    }
+.colorform{
+		background: rgba(37, 100, 196, 0.8);
+	  }
+h1{
+	color: white;  
+	  }
+		
+.navbcolor{
+	background-color: rgb(37, 100, 196);
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+		<div class="main-wrapper">
+		<div class="section  row-xs-4">
+			
+		</div>
+		<div class="section  row-xs-4">
+				<div class="onethird"></div>
+				<div class="onethird ">
+					<div class="well colorform">
+						<h1 class="text-center">Clinical studies per country</h1>
+						<form action="http://localhost:3001/api" method="post">
+							<div class="form-group"> 
+									<div  style="width:100%;">
+										<input class="form-control" id="myInput" type="text" name="condition" placeholder="Condition">
+									</div>
+							</div>
+							
+							
+							<div style="text-align:center;">
+							<button type="submit" class="btn btn-default">Search</button>
+                            </div>
+                         
+                           
+                  
+						</form>
+					
+				</div>
+				<div class="onethird"></div>
+			  </div>
+			  <div class="section  row-xs-4">
+					<div class="onethird"></div>
+					<div class="onethird"></div>
+					<div class="onethird"></div>
+				  </div>
+		</div>
+		<footer class="container-fluid text-center">
+			<p>Ioli Yiannakopoulou</p>
+		</footer>
+		
+		
+		
+</body>
+</html>
